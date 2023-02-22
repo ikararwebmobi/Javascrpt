@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body id="body">
+    <div class="main-wrapper">
+
+        <div class="contct-from-card">
+            <h1>User Info</h1>
+            <div class="contct-from-wrap">
+                <form name="contactForm" action="" onsubmit="return formValdation()">
+                    <div class="input-wrap">
+                        <label for="userName">Name</label>
+                        <input id="userName" type="text" placeholder="Name">
+                        <p id="nameError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+                        <label for="phoneNumber">Phone</label>
+                        <input id="phoneNumber" type="text" placeholder="Phone Number">
+                        <p id="phoneError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <label for="">Gender</label><br>
+                        <label for="genderMale">
+                            <input type="radio" value="Male" class="gender" name="gender" id="genderMale">
+                            Male
+                        </label>
+                        <label for="genderFemale">
+                            <input type="radio" value="Female" class="gender" name="gender" id="genderFemale">
+                            Female
+                        </label>
+                        <p id="genderError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <button class="btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="from-details-card">
+            <h1>User Details</h1>
+            <table id="userDetails">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Gender</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        let userData = [];
+        let targetRow = "";
+        function errorMsg(errorId, errorText) {
+            document.getElementById(errorId).innerText = errorText;
+            document.getElementById(errorId).style.display = "block";
+        }
+        /* if(errorMsg == true){
+            return formValdation() 
+         }*/
+        function formValdation() {
+            event.preventDefault();
+            const userName = document.getElementById("userName");
+            const userPhone = document.getElementById("phoneNumber");
+            let userGender = document.contactForm.gender.value;
+            const userTable = document.getElementById("userDetails").getElementsByTagName('tbody')[0];
+
+            if (userName.value == "") {
+                errorMsg("nameError", "First name is required");
+            }
+            else {
+                errorMsg("nameError", "");
+                // console.log(userName.value);
+            }
+            if (userPhone.value == "") {
+                errorMsg("phoneError", "Phone number is required");
+            }
+            else {
+                errorMsg("phoneError", "");
+                // console.log(userPhone.value);
+            }
+            if (userGender == "") {
+                errorMsg("genderError", "Please select your gender");
+            } else {
+                errorMsg("genderError", "");
+                genderErr = false;
+                // console.log(userGender);
+            }
+
+
+            let userInfo = {
+                userName: userName.value,
+                userPhone: userPhone.value,
+                userGender: userGender,
+            };
+
+            userData.push(userInfo);
+            console.log(userData);
+
+            // console.log(userData[i].length);
+
+
+
+            userTable.innerHTML = '';
+            userData.forEach(function (item, index) {
+                // console.log(userData);
+                let newRaw = userTable.insertRow(userTable.length);
+                let tableCell1 = newRaw.insertCell(0);
+                tableCell1.innerHTML = item.userName;
+
+                let tableCell2 = newRaw.insertCell(1);
+                tableCell2.innerHTML = item.userPhone;
+
+                let tableCell3 = newRaw.insertCell(2);
+                tableCell3.innerHTML = item.userGender;
+
+                let tableCell4 = newRaw.insertCell(3).innerHTML = `<button class='btn editeBtn' onClick='editData(this)'>Edit</button> <button class='btn deleteBtn' onClick='deleteData(this)'>Delete</button>`;
+
+            });
+            userName.value = "";
+            userPhone.value = "";
+            document.getElementById("genderMale").checked = false;
+            document.getElementById("genderFemale").checked = false;
+            return true;
+        }
+
+        function deleteData(td) {
+            alert("Do you want to delet the record?");
+            targetRow = td.parentElement.parentElement;
+            document.getElementById('userDetails').deleteRow(targetRow.rowIndex);
+        }
+
+        function editData(td) {
+            targetRow = td.parentElement.parentElement;
+            document.getElementById("userName").value = targetRow.cells[0].innerHTML;
+            document.getElementById("phoneNumber").value = targetRow.cells[1].innerHTML;
+            document.contactForm.gender.value = targetRow.cells[2].innerHTML;
+        }
+
+
+
+
+        setInterval(function () {
+            const hexValue = ["A", "B", "C", "D", "E", "F", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+            let colorCode = "";
+            for (let i = 0; i < 6; i++) {
+                colorCode += hexValue[Math.floor(Math.random() * 16)];
+            }
+            console.log(colorCode);
+
+            document.getElementById("body").style.backgroundColor = "#" + colorCode;
+
+        }, 3000);
+
+
+        let slogon = "Everyone should learn how to program";
+
+        let revSlogon = slogon.split(" ");
+
+        console.log(revSlogon);
+
+
+        let newSlogon = [];
+
+        for (i = 0; i < revSlogon.length; i++) {
+
+            console.log(revSlogon[i]);
+
+            newSlogon.push(revSlogon[i].split("").reverse().join(""));
+
+            console.log(newArry);
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitting Game</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="game-wrapper">
+
+
+        <div class="game-container">
+
+
+            <div class="game-area" id="game-zone">
+                <div class="monster" id="monster">
+                </div>
+                <div id="game-score">
+                        <h1> Game Over !</h1>
+                        <h2</h2>
+                </div>
+
+            </div>
+
+            <button class="btn" onclick="startGame()">Start Game</button>
+            <div class="counters">
+                <div id="hitCount">0</div>
+                <div id="timeCount">0</div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+        let gameStart = false;
+        let hitCount = 0;
+        let timeCount = 0
+
+        function startGame() {
+                 
+            
+            const monster = document.getElementById("monster");
+            const gameZone = document.getElementById("game-zone");
+            let hitCountText = document.getElementById("hitCount");
+            let timeCountText = document.getElementById("timeCount");
+
+            gameStart = true;
+            hitCount = 0; 
+            hitCountText.innerText = 0;
+            timeCount = 10; 
+
+
+            let gametimer = setInterval(function () {
+                monster.style.display = "block";
+                monster.style.left = Math.floor(Math.random() * 440) + "px";
+                monster.style.top = Math.floor(Math.random() * 440) + "px";
+                timeCount--;
+                timeCountText.innerText = timeCount;
+
+                if (timeCount == 0) {
+                    gameStart = false;
+                    clearInterval(gametimer);
+                    monster.style.display = "none";
+                    timeCountText.innerText = 0;
+                  
+                 }
+
+            }, 1000)
+
+            
+
+            monster.onclick = function hitCounter() {
+                if (gameStart) {
+                    hitCount++;
+                    hitCountText.innerText = hitCount;
+                    console.log(hitCount);                    
+                }
+
+            }
+
+
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

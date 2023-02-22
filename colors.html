@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="card">
+            <div class="checkbox_wrap">
+                <label for="redColor"><input type="checkbox" class="checkbox" id="redColor" value="Red Color"
+                        onclick="checkUncheck(this)"> Red Color</label>
+            </div>
+
+            <div class="checkbox_wrap">
+                <label for="blueColor"><input type="checkbox" class="checkbox" id="blueColor" value="Blue Color"
+                        onclick="checkUncheck(this)"> Blue Color</label>
+            </div>
+
+            <div class="checkbox_wrap">
+                <label for="greenColor"><input type="checkbox" class="checkbox" id="greenColor" value="Green Color"
+                        onclick="checkUncheck(this)"> Green Color</label>
+            </div>
+
+            <div class="checkbox_wrap">
+                <label for="brownColor"><input type="checkbox" class="checkbox" id="brownColor" value="Brown Color"
+                        onclick="checkUncheck(this)"> Brown Color</label>
+            </div>
+
+            <div class="checkbox_wrap">
+                <label for="tealColor"><input type="checkbox" class="checkbox" id="tealColor" value="Teal Color"
+                        onclick="checkUncheck(this)"> Teal Color</label>
+            </div>
+
+            <div class="checkbox_wrap">
+                <label for="noColor"><input type="checkbox" class="no_checkbox" id="noColor" value="No Color"
+                        onclick="noCheck()"> No Color</label>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let checkBox = document.getElementsByClassName("checkbox");
+        let checkBoxNoColor = document.getElementById("noColor");
+        function noCheck() {
+
+            for (let i = 0; i < checkBox.length; i++) {
+                if (checkBoxNoColor.checked) {
+                    checkBox[i].disabled = true;
+                    checkBox[i].value = "";
+                    
+                }
+                else {
+                    checkBox[i].disabled = false;
+                }
+            }
+
+        }
+
+        function checkUncheck(obj) {       
+            //console.log(obj);
+            let checkBoxNoColor = document.getElementById("noColor");
+            if (obj.checked) {
+                checkBoxNoColor.disabled=true;
+            }
+            else{
+                checkBoxNoColor.disabled=false;          }
+            
+            
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

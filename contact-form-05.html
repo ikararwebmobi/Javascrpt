@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="contct-from-card">
+            <h1>Contact Form</h1>
+            <div class="contct-from-wrap">
+                <form name="contactForm" action="" onsubmit="return formValdation()">
+                    <div class="input-wrap">
+                        <label for="contctName">First Name</label>
+                        <input id="contctName" type="text" placeholder="Name">
+                        <p id="contctNameError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+                        <label for="country">Country</label>
+                        <select name="country" id="country" value="">
+                            <option value="">Please select country</option>
+                            <option value="India">India</option>
+                            <option value="USA">USA</option>
+                            <option value="UAE">UAE</option>
+                        </select>
+                        <p id="countryError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+                        <label for="phoneNumber">Phone</label>
+                        <input id="phoneNumber" type="text" placeholder="Phone Number">
+                        <p id="phoneNumberError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+                        <label for="subject">Subject</label>
+                        <select name="subject" id="subject" value="">
+                            <option value="">Please select subject</option>
+                            <option value="graphic">Graphic</option>
+                            <option value="animation">Animation</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                        </select>
+                        <p id="subjectError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <label for="">Business Type</label><br>
+                        <label for="personalRadio">
+                            <input type="radio" value="Personal" class="businessType" name="businessType"
+                                id="personalRadio">
+                            Personal
+                        </label>
+                        <label for="businessRadio">
+                            <input type="radio" value="Business" class="businessType" name="businessType"
+                                id="businessRadio">
+                            Business
+                        </label>
+                        <p id="businessTypeError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+
+                        <label for="">Hobbies</label>
+                        <br>
+
+                        <label for="hobbyMusic">
+                            <input type="checkbox" class="hobbyType" value="Music" name="hobbyType" id="hobbyMusic">
+                            Music
+                        </label>
+                        <label for="hobbyPainting">
+                            <input type="checkbox" class="hobbyType" value="Painting" name="hobbyType"
+                                id="hobbyPainting">
+                            Painting
+                        </label>
+                        <label for="hobbyDancing">
+                            <input type="checkbox" class="hobbyType" value="Dancing" name="hobbyType" id="hobbyDancing">
+                            Dancing
+                        </label>
+                        <p id="hobbyTypeError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+                        <button class="btn">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+
+
+
+        </div>
+        <div class="from-details-card">
+            <h1>User Details</h1>
+            <table id="userDetails">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th>Phone</th>
+                        <th>Subject</th>
+                        <th>Business</th>
+                        <th>Hobbies</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+
+            </table>
+        </div>
+
+
+    </div>
+
+    <script>
+
+        function printError(errorId, errorText) {
+            document.getElementById(errorId).innerText = errorText;
+            document.getElementById(errorId).style.display = "block";
+        }
+        function formValdation() {
+
+            event.preventDefault();
+
+            const firstName = document.getElementById("contctName");
+            const country = document.getElementById("country");
+            const phoneNumber = document.getElementById("phoneNumber");
+            const subject = document.getElementById("subject");
+            let businessType = document.getElementsByClassName("businessType");
+            let hobbyType = document.getElementsByClassName("hobbyType");
+            let hobbyVal = [];
+
+            let contctNameError = countryError = phoneNumberError = subjectError = businessTypeError = hobbyTypeError = true
+
+            //NAME VALIDATION
+            if (firstName.value === "") {
+                firstName.style.borderColor = "#f00";
+                printError("contctNameError", "First name is required");
+            }
+
+            else if (firstName.value.length < 3) {
+                firstName.style.borderColor = "#f00";
+                printError("contctNameError", "First name be more than 3 character");
+            }
+            else {
+                firstName.style.borderColor = "#ddd";
+                printError("contctNameError", "");
+                contctNameError = false;
+            }
+
+            //COUNTRY VALIDATION
+
+            if (country.value == "") {
+                document.getElementById("country").style.borderColor = "#f00";
+                printError("countryError", "Please select country");
+            }
+
+            else {
+                document.getElementById("country").style.borderColor = "#ddd";
+                printError("countryError", "");
+                countryError = false;
+            }
+
+            //PHONE VALIDATION  
+            if (phoneNumber.value === "") {
+                phoneNumber.style.borderColor = "#f00";
+                printError("phoneNumberError", "Phone Number is required");
+            }
+            else if (isNaN(phoneNumber.value)) {
+                phoneNumber.style.borderColor = "#f00";
+                printError("phoneNumberError", "Phone Number must in numbers");
+            }
+            else if (country.value === "India" && (phoneNumber.value.length < 10 || phoneNumber.value.length > 10)) {
+                phoneNumber.style.borderColor = "#f00";
+                printError("phoneNumberError", "Indian phone number must be must be in 10 digit");
+            }
+            else if (country.value === "USA" && (phoneNumber.value.length < 9 || phoneNumber.value.length > 9)) {
+                phoneNumber.style.borderColor = "#f00";
+                printError("phoneNumberError", "USA phone number must be must be in 9 degit");
+            }
+
+            else if (country.value === "UAE" && (phoneNumber.value.length < 8 || phoneNumber.value.length > 8)) {
+                phoneNumber.style.borderColor = "#f00";
+                printError("phoneNumberError", "UAE phone number must be must be in 8 degit");
+            }
+
+            else {
+                phoneNumber.style.borderColor = "#ddd";
+                printError("phoneNumberError", "");
+                phoneNumberError = false;
+            }
+            //SUBJECT VALIDATION
+
+            if (subject.value == "") {
+                subject.style.borderColor = "#f00";
+                printError("subjectError", "Please select subject");
+            }
+
+            else {
+
+                subject.style.borderColor = "#ddd";
+                printError("subjectError", "");
+                subjectError = false;
+            }
+            //BUSINESS VALIDATION
+
+            let businessTypeVal;
+
+            for (let i = 0; i < document.contactForm.businessType.length; i++) {
+
+                if (document.contactForm.businessType[i].checked) {
+
+                    businessTypeVal = document.contactForm.businessType[i].value; 
+                    printError("businessTypeError", "");
+                    businessTypeError = false;
+                    break                        
+                }
+                else {
+                    printError("businessTypeError", "Business type is required");     
+                }
+
+            }
+
+
+            //HOBBY VALIDATION
+
+            for (let i = 0; i < hobbyType.length; i++) {
+
+                if (hobbyType[i].checked) {
+                    hobbyVal.push(hobbyType[i].value);                   
+                    printError("hobbyTypeError", "");
+                    hobbyTypeError = false;
+                    hobbyType[i].checked = false;                    
+                }
+                else {
+                    printError("hobbyTypeError", "Hobby is required");
+                }
+            }
+
+
+            if ((countryError || phoneNumberError || subjectError || businessTypeError || hobbyTypeError) == true) {
+                return false;
+            }
+            else {
+
+                const userData = document.getElementById("userDetails");
+
+                let userRaw = document.createElement("tr");
+                userData.appendChild(userRaw);
+
+                let userName = document.createElement("td");
+                userRaw.appendChild(userName);
+                userName.innerHTML = firstName.value;
+
+                let userCountry = document.createElement("td");
+                userRaw.appendChild(userCountry);
+                userCountry.innerHTML = country.value;
+
+                let userPhone = document.createElement("td");
+                userRaw.appendChild(userPhone);
+                userPhone.innerHTML = phoneNumber.value;
+
+                let userSubject = document.createElement("td");
+                userRaw.appendChild(userSubject);
+                userSubject.innerHTML = subject.value;
+
+                let userBusiness = document.createElement("td");
+                userRaw.appendChild(userBusiness);
+                userBusiness.innerHTML = businessTypeVal;
+
+
+                let userHobbies = document.createElement("td");
+                userRaw.appendChild(userHobbies);
+                userHobbies.innerHTML = hobbyVal.join(", ");
+
+                let userActions = document.createElement("td");
+                userRaw.appendChild(userActions);
+
+                let editButton = document.createElement("button");
+                editButton.classList.add("btn");
+                editButton.innerText = "Edit";
+                userActions.appendChild(editButton);
+                editButton.addEventListener("click", function () {
+                    userRaw.remove();
+                })
+
+                let removeButton = document.createElement("button");
+                removeButton.classList.add("btn");
+                removeButton.innerText = "Remove";
+                userActions.appendChild(removeButton);
+                removeButton.addEventListener("click", function () {
+                    userRaw.remove();
+                })
+
+                firstName.value = "";
+                country.value = "";
+                phoneNumber.value = "";
+                subject.value = ""    
+                document.getElementById("personalRadio").checked = false;
+                document.getElementById("businessRadio").checked = false;
+                hobbyTypeError = false;
+                return true;
+            }
+
+            return true;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

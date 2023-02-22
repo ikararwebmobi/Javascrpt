@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="card">
+
+
+            <div class="accordion-wrapper">
+                <div class="accordion-list">
+                    <h4 class="addordion-head">
+                        Accordion Header
+                    </h4>
+                    <div class="accordion-body">
+                        <p class="accordion-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsam, itaque enim
+                            quisquam maxime tenetur laudantium asperiores labore facilis sint voluptatem ut, odit ab
+                            voluptatibus.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="accordion-list">
+                    <h4 class="addordion-head">
+                        Accordion Header
+                    </h4>
+                    <div class="accordion-body">
+                        <p class="accordion-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsam, itaque enim
+                            quisquam maxime tenetur laudantium asperiores labore facilis sint voluptatem ut, odit ab
+                            voluptatibus.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="accordion-list">
+                    <h4 class="addordion-head">
+                        Accordion Header
+                    </h4>
+                    <div class="accordion-body">
+                        <p class="accordion-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsam, itaque enim
+                            quisquam maxime tenetur laudantium asperiores labore facilis sint voluptatem ut, odit ab
+                            voluptatibus.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="accordion-list">
+                    <h4 class="addordion-head">
+                        Accordion Header
+                    </h4>
+                    <div class="accordion-body">
+                        <p class="accordion-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsam, itaque enim
+                            quisquam maxime tenetur laudantium asperiores labore facilis sint voluptatem ut, odit ab
+                            voluptatibus.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="accordion-list">
+                    <h4 class="addordion-head">
+                        Accordion Header
+                    </h4>
+                    <div class="accordion-body">
+                        <p class="accordion-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsam, itaque enim
+                            quisquam maxime tenetur laudantium asperiores labore facilis sint voluptatem ut, odit ab
+                            voluptatibus.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="accordion-list">
+                    <h4 class="addordion-head">
+                        Accordion Header
+                    </h4>
+                    <div class="accordion-body">
+                        <p class="accordion-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ipsam, itaque enim
+                            quisquam maxime tenetur laudantium asperiores labore facilis sint voluptatem ut, odit ab
+                            voluptatibus.
+                        </p>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let accordionBody = document.getElementsByClassName("accordion-body");
+        let accordionButton = document.getElementsByClassName("addordion-head");
+        let i = 0;
+
+        for (let i = 0; i < accordionButton.length; i++) {
+            accordionBody[0].style.display = 'block';
+            accordionBody[i].style.display = 'none';
+            accordionButton[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                let acc_body = this.nextElementSibling;
+                if (acc_body.style.display === "none") {
+                    acc_body.style.display = 'block';
+                }
+                else {
+                    acc_body.style.display = 'none';
+                }
+            })
+        }
+
+        
+
+        setInterval(
+            function () {
+                let rColor = "";
+                let gColor = "";
+                let bColor = "";
+                for (let i = 0; i < 2; i++) {
+                    rColor += Math.floor(Math.random() * 10);
+                }
+                for (let j = 0; j < 2; j++) {
+                    rColor += Math.floor(Math.random() * 10);
+                }
+                for (let k = 0; k < 2; k++) {
+                    rColor += Math.floor(Math.random() * 10);
+                }
+
+                let colorVal = rColor + gColor + bColor; 
+                document.body.style.color= "#" + rColor + gColor + bColor;
+              //  console.log(typeof colorVal);  
+            }, 2000
+        );
+
+
+    </script>
+</body>
+
+</html>

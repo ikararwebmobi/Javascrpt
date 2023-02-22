@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="card">
+            <div class="card-body">
+
+
+                <p id="infoPara">
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        /*  for (i = 1; i < 10; i++) {
+  
+              for (j = 0; j < 10; j++) {
+  
+                  for (k = 0; k < 10; k++) {
+  
+                      let powDigi = (Math.pow(i, 3)) + (Math.pow(j, 3)) + (Math.pow(k, 3));
+  
+                      let sumVal = (i * 100) + (j * 10) + (k);
+  
+                      //  document.write(sumVal + "<br>" ) ;
+  
+                      if (powDigi == sumVal) {
+                          document.write(sumVal + "<br>");
+                      }
+  
+                  }
+              }
+  
+          }*/
+
+        // document.body.appendChild(para);
+        let myWrapper = (patternSign) =>{     
+        let n = 5;
+        patternSign = "";
+        for (a = 1; a <= n; a++) {
+            for (c = 1; c <= n - a; c++) {
+                patternSign += " ";
+            }
+
+            for (b = 1; b <= 2 * a - 1; b++) {
+                patternSign += "*";
+
+            }
+            patternSign += "</br>";
+
+            //  document.write(para)
+        }
+        //let returnPattern = document.write(`<pre>${patternSign}</pre>`);
+        return patternSign;
+        
+    }
+
+    let wrapper= document.getElementById("infoPara").innerHTML= myWrapper();
+    //wrapper.innerHTML= myWrapper();
+    console.log(myWrapper())
+
+    </script>
+
+
+</body>
+
+</html>

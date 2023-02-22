@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="contct-from-card">
+            <h1>Contact Form</h1>
+            <div class="contct-from-wrap">
+                <form name="contactForm" action="" onsubmit="return formValdation()">
+                    <div class="input-wrap">
+                        <label for="contctName">First Name</label>
+                        <input id="contctName" type="text" placeholder="Name" onkeyup="contctNameValidation()">
+                        <p id="contctNameError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+                        <label for="country">Country</label>
+                        <select name="country" id="country" value="" onchange="countryValidation()">
+                            <option value="">Please select country</option>
+                            <option value="India">India</option>
+                            <option value="USA">USA</option>
+                            <option value="UAE">UAE</option>
+                        </select>
+                        <p id="countryError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+                        <label for="phoneNumber">Phone</label>
+                        <input id="phoneNumber" type="text" placeholder="Phone Number"
+                            onkeyup="phoneNumberValidation()">
+                        <p id="phoneNumberError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+                        <label for="subject">Subject</label>
+                        <select name="subject" id="subject" value="" onchange="subjectValidation()">
+                            <option value="">Please select subject</option>
+                            <option value="graphic">Graphic</option>
+                            <option value="animation">Animation</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                        </select>
+                        <p id="subjectError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <label for="">Business Type</label><br>
+                        <label for="personalRadio">
+                            <input type="radio" value="Personal" class="businessType" name="businessType"
+                                id="personalRadio" onchange="businessTypeValidation()">
+                            Personal
+                        </label>
+                        <label for="businessRadio">
+                            <input type="radio" value="Business" class="businessType" name="businessType"
+                                id="businessRadio" onchange="businessTypeValidation()">
+                            Business
+                        </label>
+                        <p id="businessTypeError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+
+                        <label for="">Hobbies</label>
+                        <br>
+
+                        <label for="hobbyMusic">
+                            <input type="checkbox" class="hobbyType" value="Music" name="hobbyType" id="hobbyMusic"
+                               >
+                            Music
+                        </label>
+                        <label for="hobbyPainting">
+                            <input type="checkbox" class="hobbyType" value="Painting" name="hobbyType"
+                                id="hobbyPainting" >
+                            Painting
+                        </label>
+                        <label for="hobbyDancing">
+                            <input type="checkbox" class="hobbyType" value="Dancing" name="hobbyType" id="hobbyDancing"
+                                >
+                            Dancing
+                        </label>
+                        <p id="hobbyTypeError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+                        <button class="btn">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+
+
+
+        </div>
+        <div class="from-details-card">
+            <h1>User Details</h1>
+            <table id="userDetails">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th>Phone</th>
+                        <th>Subject</th>
+                        <th>Business</th>
+                        <th>Hobbies</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+
+            </table>
+        </div>
+
+
+    </div>
+
+    <script>
+        const firstName = document.getElementById("contctName");
+        const country = document.getElementById("country");
+        const phoneNumber = document.getElementById("phoneNumber");
+        const subject = document.getElementById("subject");
+       // const businessType = document.getElementsByClassName("businessType").value;
+      // const businessType = document.contactForm.businessType.value;
+       var businessType = ''; //= document.contactForm.businessType.value;
+
+        let hobbyType = '';//document.getElementsByClassName("hobbyType");
+        let hobbyVal = [];
+
+        //NAME VALIDATION
+        function contctNameValidation() {
+            if (firstName.value === "") {
+                firstName.style.borderColor = "#f00";
+                document.getElementById("contctNameError").style.display = "block";
+                document.getElementById("contctNameError").innerText = "First name is required";
+                return false;
+            }
+
+            else if (firstName.value.length < 3) {
+                firstName.style.borderColor = "#f00";
+                document.getElementById("contctNameError").style.display = "block";
+                document.getElementById("contctNameError").innerText = "First name be more than 3 character";
+                return false;
+            }
+            else {
+                firstName.style.borderColor = "#ddd";
+                document.getElementById("contctNameError").style.display = "none";
+                document.getElementById("contctNameError").innerText = "";
+                return true;
+
+            }
+            return true;
+        }
+
+        //COUNTRY VALIDATION
+        function countryValidation() {
+
+            if (country.value == "") {
+                document.getElementById("country").style.borderColor = "#f00";
+                document.getElementById("countryError").style.display = "block";
+                document.getElementById("countryError").style.innerText = "Please select country";
+            }
+
+            else {
+
+                document.getElementById("country").style.borderColor = "#ddd";
+                document.getElementById("countryError").style.display = "none";
+                document.getElementById("country").style.innerText = "";
+
+            }
+
+            return true
+
+        }
+        //PHONE VALIDATION  
+        function phoneNumberValidation() {
+            if (phoneNumber.value === "") {
+                phoneNumber.style.borderColor = "#f00";
+                document.getElementById("phoneNumberError").style.display = "block";
+                document.getElementById("phoneNumberError").innerText = "Phone Number is required";
+                return false;
+            }
+            else if (isNaN(phoneNumber.value)) {
+                phoneNumber.style.borderColor = "#f00";
+                document.getElementById("phoneNumberError").style.display = "block";
+                document.getElementById("phoneNumberError").innerText = "Phone Number must in numbers";
+                return false;
+            }
+            else if (country.value === "India" && (phoneNumber.value.length < 10 || phoneNumber.value.length > 10)) {
+                phoneNumber.style.borderColor = "#f00";
+                document.getElementById("phoneNumberError").style.display = "block";
+                document.getElementById("phoneNumberError").innerText = "Indian phone number must be must be in 10 degit";
+                return false;
+            }
+            else if (country.value === "USA" && (phoneNumber.value.length < 9 || phoneNumber.value.length > 9)) {
+                phoneNumber.style.borderColor = "#f00";
+                document.getElementById("phoneNumberError").style.display = "block";
+                document.getElementById("phoneNumberError").innerText = "USA phone number must be must be in 9 degit";
+                return false;
+            }
+
+            else if (country.value === "UAE" && (phoneNumber.value.length < 8 || phoneNumber.value.length > 8)) {
+                phoneNumber.style.borderColor = "#f00";
+                document.getElementById("phoneNumberError").style.display = "block";
+                document.getElementById("phoneNumberError").innerText = "UAE phone number must be must be in 9 degit";
+                return false;
+            }
+
+            else {
+                phoneNumber.style.borderColor = "#ddd";
+                document.getElementById("phoneNumberError").style.display = "none";
+                document.getElementById("phoneNumberError").innerText = "";
+                return true;
+            }
+            return true;
+        }
+
+        //SUBJECT VALIDATION
+        function subjectValidation() {
+
+            if (subject.value == "") {
+                subject.style.borderColor = "#f00";
+                document.getElementById("subjectError").style.display = "block";
+                document.getElementById("subjectError").innerText = "Please select subject";
+                return false;
+            }
+
+            else {
+
+                subject.style.borderColor = "#ddd";
+                document.getElementById("subjectError").style.display = "none";
+                document.getElementById("subjectError").innerText = "";
+            }
+
+            return true;
+
+        }
+
+        //BUSINESS VALIDATION
+        function businessTypeValidation() {
+            if ( document.contactForm.businessType.value == "") {
+                document.getElementById("businessTypeError").style.display = "block";
+                document.getElementById("businessTypeError").innerText = "Business type is required";
+                return false;
+            }
+            else {
+                businessType = document.contactForm.businessType.value;
+                document.getElementById("businessTypeError").style.display = "none";
+                document.getElementById("businessTypeError").innerText = "";
+                
+
+            }
+            return true;
+            console.log(businessType)
+
+        }
+
+        //HOBBY VALIDATION
+        function hobbyTypeValidation() {
+
+            for (let i = 0; i < document.getElementsByClassName("hobbyType").length; i++) {
+
+                if (document.getElementsByClassName("hobbyType")[i].checked) {
+                    hobbyVal.push(document.getElementsByClassName("hobbyType")[i].value);
+                    // document.getElementById("hobbyTypeError").style.display = "block";
+                    // document.getElementById("hobbyTypeError").innerText = "Hobby type is required";
+                    // return false;
+                }
+                // else {
+
+                //     document.getElementById("hobbyTypeError").style.display = "none";
+                //     document.getElementById("hobbyTypeError").innerText = "";
+                   
+                // }
+            }
+
+            return true;
+        }
+
+
+        // businessTypeValidation();
+        //console.log(businessType[1].value);
+
+        //FORM SUBMITTION
+        function formValdation() {
+            event.preventDefault();
+            contctNameValidation();
+            countryValidation()
+            phoneNumberValidation();
+            subjectValidation();
+            businessTypeValidation();
+            hobbyTypeValidation();
+
+            
+
+           
+            const userData = document.getElementById("userDetails");
+
+
+            let userRaw = document.createElement("tr");
+            // userRaw.classList.add("userRaw");
+            userData.appendChild(userRaw);
+
+            let userName = document.createElement("td");
+            // userName.classList.add("userName");
+            userRaw.appendChild(userName);
+            userName.innerHTML = firstName.value;
+
+            let userCountry = document.createElement("td");
+            // userCountry.classList.add("userCountry");
+            userRaw.appendChild(userCountry);
+            userCountry.innerHTML = country.value;
+
+            let userPhone = document.createElement("td");
+            // userPhone.classList.add("userPhone");
+            userRaw.appendChild(userPhone);
+            userPhone.innerHTML = phoneNumber.value;
+
+            let userSubject = document.createElement("td");
+            // userSubject.classList.add("userSubject");
+            userRaw.appendChild(userSubject);
+            userSubject.innerHTML = subject.value;
+
+            let userBusiness = document.createElement("td");
+            // userBusiness.classList.add("userBusiness");
+            userRaw.appendChild(userBusiness);
+            userBusiness.innerHTML = businessType;
+
+
+
+            let userHobbies = document.createElement("td");
+            // userHobbies.classList.add("userHobbies");
+            userRaw.appendChild(userHobbies);
+            userHobbies.innerHTML = hobbyVal.join(", ");
+
+            let userActions = document.createElement("td");
+            // userActions.classList.add("actions");
+            userRaw.appendChild(userActions);
+
+            let editButton = document.createElement("button");
+            editButton.classList.add("btn");
+            editButton.innerText = "Edit";
+            userActions.appendChild(editButton);
+            editButton.addEventListener("click", function () {
+                userRaw.remove();
+            })
+
+            let removeButton = document.createElement("button");
+            removeButton.classList.add("btn");
+            removeButton.innerText = "Remove";
+            userActions.appendChild(removeButton);
+            removeButton.addEventListener("click", function () {
+                userRaw.remove();
+            })
+            console.log(hobbyVal);
+
+            hobbyVal = []
+            
+        }
+        
+      
+
+    </script>
+</body>
+
+</html>

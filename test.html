@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="contct-from-card">
+            <h1>Contact Form</h1>
+            <div class="contct-from-wrap">
+                <form name="contactForm" action="" onsubmit="return businessTypeValidation()">
+
+                    <div class="input-wrap">
+                        <label for="">Business Type</label><br>
+                        <label for="personalRadio">
+                            <input type="radio" value="Personal" class="businessType" name="businessType"
+                                id="personalRadio">
+                            Personal
+                        </label>
+                        <label for="businessRadio">
+                            <input type="radio" value="Business" class="businessType" name="businessType"
+                                id="businessRadio">
+                            Business
+                        </label>
+                        <p id="businessTypeError" class="error"></p>
+                    </div>
+
+
+                    <div class="input-wrap">
+                        <button class="btn">Submit</button>
+                    </div>
+
+
+
+                </form>
+                <div class="inputData">
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+    <script>
+
+
+        function businessTypeValidation() {
+
+
+            let businessType = document.getElementsByClassName("businessType");
+            let inputData = document.getElementsByClassName("inputData")[0];
+
+            let businessTypeVal;
+            for (let i = 0; i < document.contactForm.businessType.length; i++) {
+                if (document.contactForm.businessType[i].checked) {
+                    businessTypeVal = document.contactForm.businessType[i].value; 
+                    break
+                }
+            }
+
+            console.log(businessTypeVal);
+
+
+
+            var hobbies = [];
+            var checkboxes = document.getElementsByName("hobbies[]");
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    // Populate hobbies array with selected values
+                    hobbies.push(checkboxes[i].value);
+                    break
+                }
+            }
+
+            // alert(businessType); 
+
+            event.preventDefault();
+
+
+            if (businessTypeVal == "") {
+                document.getElementById("businessTypeError").style.display = "block";
+                document.getElementById("businessTypeError").innerText = "Business type is required";
+            }
+
+            else {
+                document.getElementById("businessTypeError").style.display = "none";
+                document.getElementById("businessTypeError").innerText = "";
+                // return false;
+
+            }
+
+            // alert(businessType);
+            // console.log(businessType);
+
+            let userBusiness = document.createElement("div");
+            userBusiness.classList.add("userBusiness");
+            inputData.appendChild(userBusiness);
+            userBusiness.innerHTML = "My Business : " + businessTypeVal + " " + "<br>";
+
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

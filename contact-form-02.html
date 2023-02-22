@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="contct-from-card">
+            <h1>Contact Form</h1>
+            <div class="contct-from-wrap">
+                <form name="contactForm" action="" onsubmit="return submitContactForm();">
+                    <div class="input-wrap">
+                        <label for="contctName">First Name</label>
+                        <input id="contctName" type="text" placeholder="Name" onkeyup="contctNameValidation()">
+                        <p id="contctNameError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input id="phoneNumber" type="text" placeholder="Phone Number" onkeyup="phoneNumberValidation()">
+                        <p id="phoneNumberError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <label for="emailAddress">Email Address</label>
+                        <input id="emailAddress" type="text" placeholder="Email Address" onkeyup="emailAddressValidation()">
+                        <p id="emailAddressError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <label for="message">Message</label>
+                        <textarea name="" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                        <p id="messageError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <button class="btn" id="submitForm" onclick="submitContactForm()">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
+    </div>
+    <script>
+        const firstName = document.getElementById("contctName");
+        const phoneNumber = document.getElementById("phoneNumber");
+        const emailAddress = document.getElementById("emailAddress");
+        const message = document.getElementById("message").value;
+        const submitForm = document.getElementById("submitForm");
+
+        //console.log(firstName);
+
+        function contctNameValidation() {
+            if (firstName.value === "") {
+                firstName.style.borderColor = "#f00";
+                document.getElementById("contctNameError").style.display = "block";
+                document.getElementById("contctNameError").innerText = "First name is required";
+                return false;
+            }
+            else if (firstName.value > 3) {
+                firstName.style.borderColor = "#f00";
+                document.getElementById("contctNameError").style.display = "block";
+                document.getElementById("contctNameError").innerText = "First name should not be less than 3 characters";
+                return false;
+                console.log("Name is greater than 3")
+            }
+            else {
+                firstName.style.borderColor = "";
+                document.getElementById("contctNameError").style.display = "none";
+                document.getElementById("contctNameError").innerText = "";
+            }
+            return true;
+        }
+
+        function phoneNumberValidation() {
+            if (phoneNumber.value === "") {
+                phoneNumber.style.borderColor = "#f00";
+                document.getElementById("phoneNumberError").style.display = "block";
+                document.getElementById("phoneNumberError").innerText = "Phone number is required";
+                return false;
+            }
+
+            if (isNaN(phoneNumber.value)) {
+
+                phoneNumber.style.borderColor = "#f00";
+                document.getElementById("phoneNumberError").style.display = "block";
+                document.getElementById("phoneNumberError").innerText = "Phone number must have number";
+                return false;
+
+                if (phoneNumber.value.length !== 10) {
+                phoneNumber.style.borderColor = "#f00";
+                document.getElementById("phoneNumberError").style.display = "block";
+                document.getElementById("phoneNumberError").innerText = "Phone number must be in 10 digits";
+                return false;
+                }
+
+               
+            }
+            else {
+                phoneNumber.style.borderColor = "";
+                document.getElementById("phoneNumberError").style.display = "none";
+                document.getElementById("phoneNumberError").innerText = "";
+                return false;                
+            }
+            return true;
+        }
+
+        function emailAddressValidation() {
+            if (emailAddress.value === "") {
+                emailAddress.style.borderColor = "#f00";
+                document.getElementById("emailAddressError").style.display = "block";
+                document.getElementById("emailAddressError").innerText = "Email is required";
+                return false;
+            }
+
+            else if (emailAddress.value.indexOf("@") == -1 || emailAddress.value.indexOf(".com") == -1) {
+                emailAddress.style.borderColor = "#f00";
+                document.getElementById("emailAddressError").style.display = "block";
+                document.getElementById("emailAddressError").innerText = "Please provide valid email address";
+                return false;
+            }
+            else {
+                emailAddress.style.borderColor = "";
+                document.getElementById("emailAddressError").style.display = "none";
+                document.getElementById("emailAddressError").innerText = "";
+                return false;
+            }
+            return true;
+        }
+        function submitContactForm() {
+            event.preventDefault()
+            contctNameValidation();
+            phoneNumberValidation();
+            emailAddressValidation();
+           /*  console.log(contctNameValidation());
+            console.log(phoneNumberValidation());
+            console.log(emailAddressValidation());*/
+        } 
+
+    </script>
+</body>
+
+</html>

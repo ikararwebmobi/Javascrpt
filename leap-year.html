@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd Even Number</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" id="year">
+                <button class="btn" onclick="leapYear()">Check</button>
+                <p id="infoPara">
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function leapYear() {
+            let year = document.getElementById("year").value;
+            let para = document.getElementById("infoPara");
+            if (year % 4 === 0) {
+                if (year % 100 === 0) {
+
+                    if (year % 400 === 0) {
+                        para.innerHTML = ` ${year} is a Leap Year`;
+                    }
+                    else {
+                        para.innerHTML = ` ${year} is not a Leap Year`;
+                    }
+                }
+                else {
+                    para.innerHTML = ` ${year} is a Leap Year`;
+                }
+            }
+            else {
+                para.innerHTML = ` ${year} is not a Leap Year`;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="contct-from-card">
+            <h1>User Info</h1>
+            <div class="contct-from-wrap">
+                <form name="contactForm" action="" onsubmit="return formValdation()">
+                    <div class="input-wrap">
+                        <label for="userName">Name</label>
+                        <input id="userName" type="text" placeholder="Name">
+                        <p id="nameError" class="error"></p>
+                    </div>
+
+                    <div class="input-wrap">
+                        <label for="phoneNumber">Phone</label>
+                        <input id="phoneNumber" type="text" placeholder="Phone Number">
+                        <p id="phoneError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <label for="">Gender</label><br>
+                        <label for="genderMale">
+                            <input type="radio" value="Male" class="gender" name="gender" id="genderMale">
+                            Male
+                        </label>
+                        <label for="businessRadio">
+                            <input type="radio" value="Female" class="gender" name="gender" id="genderFemale">
+                            Female
+                        </label>
+                        <p id="genderError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <button class="btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="from-details-card">
+            <h1>User Details</h1>
+            <table id="userDetails">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Gender</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        let userInfo = [];
+        function errorMsg(errorId, errorText) {
+            document.getElementById(errorId).innerText = errorText;
+            document.getElementById(errorId).style.display = "block";
+        }
+        function formValdation() {
+            event.preventDefault();
+            const userName = document.getElementById("userName");
+            const userPhone = document.getElementById("phoneNumber");
+            let userGender = document.contactForm.gender.value;
+            const userTable = document.getElementById("userDetails").getElementsByTagName('tbody')[0];
+            if (userName.value == "") {
+                errorMsg("nameError", "First name is required");
+            }
+            else {
+                errorMsg("nameError", "");
+                console.log(userName.value);
+            }
+            if (userPhone.value == "") {
+                errorMsg("phoneError", "Phone number is required");
+            }
+            else {
+                errorMsg("phoneError", "");
+                console.log(userPhone.value);
+            }
+            if (userGender == "") {
+                errorMsg("genderError", "Please select your gender");
+            } else {
+                errorMsg("genderError", "");
+                genderErr = false;
+                console.log(userGender);
+            }
+
+
+            userInfo.push({
+                userNameInfo: userName.value,
+                userPhoneInfo: userPhone.value,
+                userGenderInfo: userGender,
+            });
+
+            localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+            console.log(userInfo);
+
+            userInfo = JSON.parse(localStorage.getItem("userInfo")) || [];
+            for (i = 0; i < userInfo.length; i++) {
+                userTable.innerHTML += `
+                <tr>                       
+ <td>${userInfo[i].userNameInfo}</td>
+ <td>${userInfo[i].userPhoneInfo}</td>
+ <td>${userInfo[i].userGenderInfo}</td>
+ <td><button id='editeBtn' class='btn'>Edit</button> <button id='deleteBtn' class='btn'>Delete</button></td>
+ </tr>
+`;
+            }
+
+
+
+            let deletBtn = document.getElementById("deleteBtn");
+            let editeBtn = document.getElementById("editeBtn");
+
+            deletBtn.addEventListener("click",
+                function (e) {
+                    this.parentElement.parentElement.remove();
+                }
+            );
+
+            editeBtn.addEventListener("click",
+                function (e) {
+                    userName.value = userInfo.userNameInfo;
+                    userPhone.value = userInfo.userPhoneInfo;
+                    userGender.value = userInfo.userGenderInfo;
+                }
+            );
+
+
+            userName.value = "";
+            userPhone.value = "";
+            userGender.checked = false;
+
+            return true;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

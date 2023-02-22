@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="contct-from-card">
+            <h1>Contact Form</h1>
+
+            <div class="contct-from-wrap">
+                <form name="contactForm" action="contact-form.php" onsubmit="return validForm()">
+                    <div class="input-wrap">
+                        <label for="contctName">First Name</label>
+                        <input id="contctName" type="text" placeholder="Name">
+                        <p id="contctNameError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input id="phoneNumber" type="text" placeholder="Phone Number">
+                        <p id="phoneNumberError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <label for="emailAddress">Email Address</label>
+                        <input id="emailAddress" type="text" placeholder="Email Address">
+                        <p id="emailAddressError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+                        <label for="message">Message</label>
+                        <textarea name="" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                        <p id="messageError" class="error"></p>
+                    </div>
+                    <div class="input-wrap">
+
+                        <button class="btn" id="submitForm">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+        const firstName = document.getElementById("contctName");
+        const phoneNumber = document.getElementById("phoneNumber");
+        const emailAddress = document.getElementById("emailAddress");
+        const message = document.getElementById("message").value;
+        const submitForm = document.getElementById("submitForm");
+
+        //console.log(firstName);
+        function validForm() {
+
+            if (firstName.value === "") {
+                firstName.style.borderColor = "#f00";
+                document.getElementById("contctNameError").style.display = "block";
+                document.getElementById("contctNameError").innerText = "First name is required";
+                return false;
+            }
+
+            if (phoneNumber.value === "") {
+                phoneNumber.style.borderColor = "#f00";
+                document.getElementById("phoneNumberError").style.display = "block";
+                document.getElementById("phoneNumberError").innerText = "Phone number is required";
+                return false;
+            }
+
+            if (phoneNumber.value.length !== 10) {
+                phoneNumber.style.borderColor = "#f00";
+                document.getElementById("phoneNumberError").style.display = "block";
+                document.getElementById("phoneNumberError").innerText = "Phone number must be in 10 digits";
+                return false;
+            }
+
+            if (isNaN(phoneNumber.value)) {
+                phoneNumber.style.borderColor = "#f00";
+                document.getElementById("phoneNumberError").style.display = "block";
+                document.getElementById("phoneNumberError").innerText = "Phone number must have number";
+                return false;
+            }
+
+
+            if (emailAddress.value === "") {
+                emailAddress.style.borderColor = "#f00";
+                document.getElementById("emailAddressError").style.display = "block";
+                document.getElementById("emailAddressError").innerText = "Email is required";
+                return false;
+            }
+
+            if (emailAddress.value.indexOf("@")  == -1 || emailAddress.value.indexOf(".com")  == -1) {
+                emailAddress.style.borderColor = "#f00";
+                document.getElementById("emailAddressError").style.display = "block";
+                document.getElementById("emailAddressError").innerText = "Please provide valid email address";
+                return false;
+            }
+
+            return true;
+
+        }
+
+
+    </script>
+</body>
+
+</html>

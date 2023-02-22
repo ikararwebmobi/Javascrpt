@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guess</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" id="digiPrimary">
+                <button class="btn" onclick="numGuess()">Check</button>
+                <p id="infoPara" class="para">
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        
+ function numGuess(){
+
+                let digiPrimary = document.getElementById("digiPrimary").value;
+                let para = document.getElementById("infoPara");
+                let guessNum = Math.floor(Math.random()*10);
+                console.log(guessNum);
+
+               if( digiPrimary == guessNum){
+                para.innerHTML=("You are smart!");
+                }
+                else{
+                    para.innerHTML=("Try Again");
+                }
+             }
+             
+    </script>
+</body>
+
+</html>

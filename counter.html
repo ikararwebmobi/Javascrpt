@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="counter-card">
+            <h1>End of Waiting for New Year 2023!!</h1>
+            <h2 id="end-date"></h2>
+            <div class="counter-wrap">
+                <div class="box">
+                    <input type="text" readonly value="0">
+                    <h3> Days</h3>
+                </div>
+                <div class="box"> <input type="text" readonly value="0">
+                    <h3> Hours</h3>
+                </div>
+                <div class="box"> <input type="text" readonly value="0">
+                    <h3> Minutes</h3>
+                </div>
+                <div class="box"> <input type="text" readonly value="0">
+                    <h3> Seconds</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+        function clock() {
+
+
+            const endDate = "12 December 2023 11:59:59 PM";
+
+
+            document.getElementById("end-date").innerText = endDate;
+
+            const targetDate = new Date(endDate);
+            const currentDate = new Date();
+
+            const dateDiff = (targetDate - currentDate) / 1000;
+            // console.log(dateDiff / 3600);
+            // console.log((dateDiff / 3600) / 24);
+            // console.log((dateDiff / 3600) % 24);
+            //console.log((dateDiff / 60 % 60));
+
+            let inputDate = document.querySelectorAll("input");
+
+            // Days
+            inputDate[0].value = Math.floor(dateDiff / 3600 / 24);
+            // Hours
+            inputDate[1].value = Math.floor((dateDiff / 3600) % 24);
+            // Min
+            inputDate[2].value = Math.floor(dateDiff / 60) % 60;
+            // Sec
+            inputDate[3].value = Math.floor(dateDiff % 60);
+
+        }
+
+        setInterval(clock, 1000);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patterns</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <div class="pattern-wrapper">
+
+                    <div class="pattern pattern_01">
+                        <h4>Pattern : 01</h4>
+                        <p id="pattern_01">
+                        </p>
+                    </div>
+
+                    <div class="pattern pattern_02">
+                        <h4>Pattern : 02</h4>
+                        <p id="pattern_02">
+                        </p>
+                    </div>
+
+                    <div class="pattern pattern_03">
+                        <h4>Pattern : 03</h4>
+                        <p id="pattern_03">
+                        </p>
+                    </div>
+                    <div class="pattern pattern_04">
+                        <h4>Pattern : 04</h4>
+                        <p id="pattern_04">
+                        </p>
+                    </div>
+
+                    <div class="pattern pattern_05">
+                        <h4>Pattern : 05</h4>
+                        <p id="pattern_05">
+                        </p>
+                    </div>
+
+                    <div class="pattern pattern_06">
+                        <h4>Pattern : 06</h4>
+                        <p id="pattern_06">
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="pattern-wrapper">
+                    <div class="pattern pattern_07">
+                        <h4>Pattern : 07</h4>
+                        <p id="pattern_07">
+                        </p>
+                    </div>
+                    <div class="pattern pattern_08">
+                        <h4>Pattern : 08</h4>
+                        <p id="pattern_08">
+                        </p>
+                    </div>
+                    <div class="pattern pattern_09">
+                        <h4>Pattern : 09</h4>
+                        <p id="pattern_09">
+                        </p>
+                    </div>
+                    <div class="pattern pattern_10">
+                        <h4>Pattern : 10</h4>
+                        <p id="pattern_10">
+                        </p>
+                    </div>
+                    <div class="pattern pattern_11">
+                        <h4>Pattern : 11</h4>
+                        <p id="pattern_11">
+                        </p>
+                    </div>
+                    <div class="pattern pattern_12">
+                        <h4>Pattern : 12</h4>
+                        <p id="pattern_12">
+                        </p>
+                    </div>
+                </div>
+                <h2>Dynemic Patttern</h2>
+                <div class="pattern-wrapper">
+
+                    <div class="pattern pattern_dynemic">
+                        <p id="pattern_Dynemic">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let n = parseInt(prompt("Please enter a number here", ""));
+        // Pattern 1;
+
+        let jsPattern01 = (patternSign) => {
+
+
+            patternSign = "";
+            patternSign = "";
+            patternSign = "";
+
+            for (a = 1; a <= n; a++) {
+
+                for (b = 1; b <= a; b++) {
+                    patternSign += "*";
+                }
+                patternSign += "<br>"
+            }
+            return patternSign;
+
+        }
+        // Pattern 2;
+        let jsPattern02 = (patternSign) => {
+
+
+            patternSign = "";
+            patternSign = "";
+            patternSign = "";
+
+            for (a = n; a >= 1; a--) {
+
+                for (b = 1; b <= a; b++) {
+                    patternSign += "*";
+                }
+                patternSign += "<br>"
+            }
+            return patternSign;
+
+        }
+
+        // Pattern 3;
+        let jsPattern03 = (patternSign) => {
+
+            patternSign = "";
+            patternSign = "";
+            patternSign = "";
+
+            for (let a = 1; a <= n; a++) {
+
+                for (b = 1; b <= n - a; b++) {
+                    patternSign += "&nbsp;&nbsp;";
+                }
+                for (let c = 1; c <= a; c++) {
+
+                    patternSign += "*";
+                }
+                patternSign += "<br>";
+            }
+            return patternSign;
+        }
+
+        // Pattern 4;
+        let jsPattern04 = (patternSign) => {
+
+            patternSign = "";
+            patternSign = "";
+            patternSign = "";
+
+            for (let a = n; a >= 1; a--) {
+
+                for (b = 1; b <= n - a; b++) {
+                    patternSign += "&nbsp;&nbsp;";
+                }
+                for (let c = 1; c <= a; c++) {
+                    patternSign += "*";
+                }
+                patternSign += "<br>";
+            }
+            return patternSign;
+        }
+
+        // Pattern 5;
+        let jsPattern05 = (patternSign) => {
+
+            patternSign = "";
+            patternSign = "";
+            patternSign = "";
+
+            for (let a = 1; a <= n; a++) {
+
+                for (b = 1; b <= n - a; b++) {
+                    patternSign += "&nbsp;&nbsp;";
+                }
+                for (let c = 1; c <= 2 * a - 1; c++) {
+                    patternSign += "*";
+                }
+                patternSign += "<br>";
+            }
+            return patternSign;
+        }
+
+        // Pattern 6;
+        let jsPattern06 = (patternSign) => {
+
+            patternSign = "";
+            patternSign = "";
+            patternSign = "";
+
+            for (let a = n; a >= 1; a--) {
+
+                for (b = 1; b <= n - a; b++) {
+                    patternSign += "&nbsp;&nbsp;";
+                }
+                for (let c = 1; c <= 2 * a - 1; c++) {
+                    patternSign += "*";
+                }
+                patternSign += "<br>";
+            }
+            return patternSign;
+        }
+
+        // Pattern 7;
+        let jsPattern07 = (patternSign) => {
+
+            patternSign = "";
+            patternSign = "";
+            patternSign = "";
+            for (let a = 1; a <= n; a++) {
+                for (let b = 1; b <= a; b++) {
+                    patternSign += "*";
+                }
+                patternSign += "<br>";
+
+                if (a == n) {
+
+                    for (a = n; a >= 1; a--) {
+
+
+
+                        for (b = 1; b <= a; b++) {
+                            patternSign += "*";
+                        }
+                        patternSign += "<br>"
+                    }
+                    return patternSign;
+                }
+            }
+            return patternSign;
+        }
+
+        let jsPattern08 = (patternSign) => {
+
+            patternSign = "";
+            patternSign = "";
+            patternSign = "";
+            for (let a = 1; a <= n; a++) {
+
+                for (let b = 1; b <= n - a; b++) {
+                    patternSign += "&nbsp;&nbsp;";
+                }
+
+                for (let c = 1; c <= a; c++) {
+                    patternSign += "*";
+                }
+
+                patternSign += "<br>";
+
+                if (a == n) {
+
+                    for (a = n; a >= 1; a--) {
+
+                        for (b = 1; b <= n - a; b++) {
+                            patternSign += "&nbsp;&nbsp;";
+
+                        }
+
+                        for (c = 1; c <= a; c++) {
+                            patternSign += "*";
+                        }
+                        patternSign += "<br>"
+                    }
+                    return patternSign;
+                }
+            }
+            return patternSign;
+        }
+        let jsPattern09 = (patternSign) => {
+
+            patternSign = "";
+            patternSign = "";
+            patternSign = "";
+
+            for (a = 1; a <= n; a++) {
+
+                for (b = 1; b <= n - a; b++) {
+                    patternSign += "&nbsp;&nbsp;";
+                }
+                for (c = 1; c <= 2 * a - 1; c++) {
+                    patternSign += "*";
+                }
+                patternSign += "<br>";
+
+                if (a == n) {
+
+                    for (a = n; a >= 1; a--) {
+
+                        for (b = 1; b <= n - a; b++) {
+                            patternSign += "&nbsp;&nbsp;"
+                        }
+                        for (c = 1; c <= 2 * a - 1; c++) {
+                            patternSign += "*";
+                        }
+                        patternSign += "<br>";
+                    }
+                    return patternSign;
+                }
+
+            }
+            return patternSign;
+        }
+
+        let jsPattern10 = (patternSign) => {
+
+            patternSign = "";
+            patternSign = "";
+            patternSign = "";
+
+            for (a = n; a >= 1; a--) {
+
+                for (b = 1; b <= a; b++) {
+                    patternSign += "*";
+                }
+                patternSign += "<br>";
+
+                if (a == 1) {
+
+                    for (a = 1; a <= n; a++) {
+
+                        for (b = 1; b <= a; b++) {
+                            patternSign += "*";
+                        }
+                        patternSign += "<br>"
+
+                    }
+                    return patternSign;
+
+                }
+            }
+
+            return patternSign;
+
+        }
+
+
+        let jsPattern11 = (patternSign) => {
+
+            patternSign = "";
+            patternSign = "";
+            patternSign = "";
+
+            for (a = n; a >= 1; a--) {
+
+                for (b = 1; b <= n - a; b++) {
+                    patternSign += "&nbsp;&nbsp;"
+                }
+                for (c = 1; c <= a; c++) {
+                    patternSign += "*";
+                }
+                patternSign += "<br>";
+
+                if (a == 1) {
+                    for (a = 1; a <= n; a++) {
+
+                        for (b = 1; b <= n - a; b++) {
+                            patternSign += "&nbsp;&nbsp;"
+                        }
+                        for (c = 1; c <= a; c++) {
+                            patternSign += "*"
+
+                        }
+                        patternSign += "<br>";
+                    }
+                    return patternSign;
+                }
+            }
+            return patternSign;
+        }
+
+        let jsPattern12 = (patternSign) => {
+
+            patternSign = "";
+
+            for (a = 1; a <= n; a++) {
+
+                for (b = 1; b <= n - a; b++) {
+                    patternSign += "&nbsp;&nbsp;"
+                }
+                for (c = 1; c <= a; c++) {
+                    patternSign += "*"
+                }
+
+                if (a == n) {
+                    patternSign += "<br>";
+                    for (a = n; a >= 1; a--) {
+
+                        for (b = 1; b <= 2 * n - n; b++) {
+                            patternSign += "&nbsp;&nbsp;"
+                        }
+                        for (c = 1; c <= a; c++) {
+                            patternSign += "*"
+                        }
+                        patternSign += "<br>";
+                    }
+                    return patternSign;
+
+                }
+
+                patternSign += "<br>";
+
+            }
+
+            return patternSign;
+        }
+
+        let wrapper1 = document.getElementById("pattern_01").innerHTML = jsPattern01();
+
+        let wrapper2 = document.getElementById("pattern_02").innerHTML = jsPattern02();
+
+        let wrapper3 = document.getElementById("pattern_03").innerHTML = jsPattern03();
+
+        let wrapper4 = document.getElementById("pattern_04").innerHTML = jsPattern04();
+
+        let wrapper5 = document.getElementById("pattern_05").innerHTML = jsPattern05();
+
+        let wrapper6 = document.getElementById("pattern_06").innerHTML = jsPattern06();
+
+        let wrapper7 = document.getElementById("pattern_07").innerHTML = jsPattern07();
+
+        let wrapper8 = document.getElementById("pattern_08").innerHTML = jsPattern08();
+
+        let wrapper9 = document.getElementById("pattern_09").innerHTML = jsPattern09();
+
+        let wrappe10 = document.getElementById("pattern_10").innerHTML = jsPattern10();
+
+        let wrappe11 = document.getElementById("pattern_11").innerHTML = jsPattern11();
+
+        let wrappe12 = document.getElementById("pattern_12").innerHTML = jsPattern12();
+
+
+
+
+        let jsPattern_Dynemic = (patternSign) => {
+
+
+            patternSign = "";
+            patternSign = "";
+
+            for (i = 1; i <= n; i++) {
+                if (i == 1 || i == n) {
+                    for (j = 1; j <= n; j++) {
+                        patternSign += "*";
+                    }
+                    patternSign += "<br>"
+                    continue;
+                }
+                for (j = 1; j <= n; j++) {
+                    if (j == 1 || j == n) {
+                        patternSign += "*";
+                        continue;
+                    }
+                    patternSign += "&nbsp;&nbsp;"
+                }
+                patternSign += "<br>"
+            }
+            return patternSign; 5
+        }
+
+        let wrapperDynemic = document.getElementById("pattern_Dynemic").innerHTML = jsPattern_Dynemic();
+
+
+
+
+        /*  let paraColor = document.getElementsByClassName=("pattern-wrapper");
+         let myColor = "";
+         for (let i = 0; i < 6; i++) {
+             myColor += Math.floor((Math.random()) * 10);
+         }
+         paraColor.style.Color =("#"+myColor); */
+
+
+
+        setInterval(() => {
+               let myPara = document.getElementsByClassName("pattern-wrapper");
+                console.log()
+                let myColor = "";
+                for (let i = 0; i < 6; i++) {
+                    myColor += Math.floor(Math.random()*10);                    
+                }
+
+                for (let j = 0; j < myPara.length; j++) {
+                    myPara[j].style.color="#"+myColor;                    
+                }
+
+
+            //    let myParaColor = document.getElementsByClassName("pattern-wrapper")[0].style.color="#"+myColor;
+              // return myParaColor;
+               
+            }
+
+            , 2000);
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

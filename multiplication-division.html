@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication - Division</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" id="digiPrimary">
+                <input type="text" id="digiSecondary">
+                <input type="text" id="str">
+                <button class="btn" onclick="multiplication()">Multiply</button>
+                <button class="btn" onclick="division()">Divide </button>
+                <p id="infoPara" class="para">
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        function multiplication() {
+            let digiPrimary = document.getElementById("digiPrimary").value;
+            // let digiPrimaryNum = Number(digiPrimary);
+            let digiSecondary = document.getElementById("digiSecondary").value;
+            let para = document.getElementById("infoPara");
+            let multiplyNum = ("Mulitiplication is : " + digiPrimary * digiSecondary);
+            para.innerHTML = multiplyNum;
+            console.log(typeof digiPrimary);
+        }
+        function division() {
+            let digiPrimary = document.getElementById("digiPrimary").value;
+            let digiSecondary = document.getElementById("digiSecondary").value;
+            let para = document.getElementById("infoPara");
+            let divideNum = ("Division is : " + digiPrimary / digiSecondary);
+            para.innerHTML = divideNum;
+        }
+
+
+        function diff(n) {
+            let diffNum = (n <= 10) ? (10 - n) : (n - 10) * 2;
+            return diffNum;
+        }
+        let para = document.getElementById("infoPara").innerHTML = (diff(8));
+
+
+        let str1 = "ikararahmed";
+        let str2 = str1.substr(0, 11);
+        console.log(str1, "\n", str2, "\n", str2.length);
+
+        function rmvChar(strn,rmChrNum) {
+          let strn = document.getElementById("str").value;
+          let rmChrNum = document.getElementById("digiPrimary").value;
+
+          let newStr1 = strn.substr(0,rmChrNum);
+          let newStr2 = strn.substr(rmChrNum+1,strn.length);
+            return(newStr1 + newStr2);
+         
+        }
+
+        console.log(rmvChar())
+    </script>
+</body>
+
+</html>

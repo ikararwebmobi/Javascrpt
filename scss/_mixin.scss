@@ -1,0 +1,18 @@
+@mixin absoluteCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;   
+}
+$col: 12;
+@for $i from 1 through $col {
+    .col-#{$i} {
+        width: (100% / $i);
+    }
+}  
+$selector: 12;
+@for $i from 1 through $selector {
+    div[data-drupal-selector*="edit-page-#{$i}"] {
+        font-size: 30px;
+    } 
+}  

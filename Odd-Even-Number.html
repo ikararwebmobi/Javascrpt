@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd Even Number</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <div class="main-wrapper">
+  <div class="card">
+    <div class="card-body">
+      <h2>Find out the odd even number</h2>
+      <input type="text" placeholder="Input any number here" id="myNumber">
+      <button class="btn" id="myResultButton" onclick="myfunction()">Get Result</button>
+      <h4 id="myResult"></h4>
+      <p id="infoPara">
+
+      </p>
+
+      <div data-drupal-selector="edit-page-1-wrapper">
+        01
+      </div>
+      <div data-drupal-selector="edit-page-2-wrapper">
+        02
+      </div>
+      <div data-drupal-selector="edit-page-3-wrapper">
+        03
+      </div>
+      <div data-drupal-selector="edit-page-4-wrapper">
+        04
+      </div>
+
+    </div>
+  </div>
+</div>
+<script> 
+  
+  let myResult= document.getElementById("myResult");
+  function myfunction(){
+    let myNumber= document.getElementById("myNumber").value;
+    console.log(myNumber)
+    if(myNumber %2 == 0){
+      document.getElementById("myResult").innerHTML=`You entered ${myNumber} and it is an Even Numner`;
+    }
+    else{
+      document.getElementById("myResult").innerHTML=`You entered ${myNumber} and it is an Odd Number`;
+    }
+  }
+
+  //let num1 = parseInt(prompt("Enter Number 01"));
+ // let num2 = parseInt(prompt("Enter Number 02"));
+ // let num3 = parseInt(prompt("Enter Number 03"));
+
+ // let resultAdd= Math.max(num1, num2, num3);
+  //console.log(resultAdd); 
+
+  //console.log(num1,num2,num3)
+
+   const personInfo= [
+      {Name : "Raj", Role : "UI Developer"},
+      {Name : "Neel", Role : "Frontend Developer"},
+      {Name : "Seed", Role : "Backend Developer"},
+   ]
+   let infoBlock = document.getElementById("infoPara");
+  // console.log(personInfo[1]);
+   for( let a = 0; a < personInfo.length; a++){
+    infoBlock.innerHTML = (personInfo[a].Name + " : " + personInfo[a].Role);
+   }
+
+function addNum (a,b){
+  document.write(a+b);
+  // return addNum;
+}
+ addNum(25,35);
+
+ let color = ["red", "green", "yellow","black"]
+
+ color.push("blue"); 
+ console.log(color) 
+
+
+
+</script>
+</body>
+</html>

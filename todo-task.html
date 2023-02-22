@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do Task</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="task-from-card">
+            <h1>To Do Task</h1>
+            <div class="task-from-wrap">
+
+                <div class="task-wrap">
+                    <input id="taskName" type="text" placeholder="Add your task here...">
+                    <button class="btn" id="addTaskBtn" onclick="addTask()">Add Task</button>
+                </div>
+
+                <div id="taskItems">
+                    
+                </div> 
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+    <script>
+
+        function addTask() {
+            const taskInput = document.getElementById("taskName");
+            const taskInputValue = document.getElementById("taskName").value;
+            const taskItems = document.getElementById("taskItems");
+            // console.log(taskInputValue);
+
+            taskInput.value = "";
+
+            if (!taskInputValue) {
+                //alert("Please create your task");
+
+                const emptyTask = document.createElement("p");
+                emptyTask.classList.add("error", "empty-erro");
+                emptyTask.innerHTML = "Please enter task";
+
+                return;
+            }
+
+
+            //TASK LIST ITEM
+            const taskItem = document.createElement("div");
+            taskItem.classList.add("task-item");
+            taskItems.appendChild(taskItem);
+
+            //TASK LIST INPUT
+            const taskItemInput = document.createElement("input");
+            taskItemInput.value = taskInputValue;
+            taskItemInput.classList.add("task-item-input");
+            taskItemInput.setAttribute("readonly", "readonly");
+            taskItem.appendChild(taskItemInput);
+
+            //BUTTON PARENT
+            const actionsPanel = document.createElement("div");
+            actionsPanel.classList.add("actions");
+            taskItem.appendChild(actionsPanel);
+
+            //EDIT BUTTON
+            const btnEdit = document.createElement("button");
+            btnEdit.classList.add("btn", "btn-edit");
+            btnEdit.innerHTML = "Edit";
+            actionsPanel.appendChild(btnEdit);
+
+            btnEdit.addEventListener("click",
+                function () {
+
+                    if (this.innerHTML === "Edit") {
+                        taskItemInput.removeAttribute("readonly", "readonly");
+                        this.innerHTML = "Save";
+
+                    }
+                    else {
+                        taskItemInput.setAttribute("readonly", "readonly");
+                        this.innerHTML = "Edit";
+                        console.log("old");
+                    }
+                }
+            );
+
+            //DELET BUTTON
+            const btnDelete = document.createElement("button");
+            btnDelete.classList.add("btn", "btn-delete");
+            btnDelete.innerHTML = "Delete";
+            actionsPanel.appendChild(btnDelete);
+
+            btnDelete.addEventListener("click",
+                function () {
+                    taskItem.remove();
+                }
+
+            );
+        }
+    </script>
+
+</body>
+
+</html>

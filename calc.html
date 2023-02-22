@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="card">
+            <div class="card-body">
+
+
+                <input type="number" placeholder="Enter Number Here" id="digiPrimary">
+
+                <select id="calcSign">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">X</option>
+                    <option value="/">/</option>
+
+                </select>
+
+                <input type="number" placeholder="Enter Number Here" id="digiSecondary">
+
+                <button class="btn" id="calcButton" onclick="calcFunc();">Show Result</button>
+                <br>
+                <p id="calcResult">Result will dispaly here</p>
+                <div class="pattern-wrapper">
+                    <p id="pattern"></p>
+                </div>
+
+
+            </div>
+
+            <script>
+
+                let calcFunc = () => {
+                    let digiPrimary = parseInt(document.getElementById("digiPrimary").value);
+
+                    let digiSecondary = parseInt(document.getElementById("digiSecondary").value);
+
+                    let calcSign = document.getElementById("calcSign").value;
+
+                    let showResult = document.getElementById("calcResult");
+
+                    if (calcSign == "+") {
+
+                        showResult.innerHTML = digiPrimary + digiSecondary;
+
+                    }
+
+                    else if (calcSign == "-") {
+
+                        showResult.innerHTML = digiPrimary - digiSecondary;
+
+                    }
+
+                    else if (calcSign == "*") {
+
+                        showResult.innerHTML = digiPrimary * digiSecondary;
+
+                    }
+
+                    else if (calcSign == "/") {
+
+                        showResult.innerHTML = digiPrimary / digiSecondary;
+
+                    }
+
+
+
+                    console.log(digiPrimary, digiSecondary, calcSign)
+                }
+
+
+                let jsPattern = (patternSign) => {
+                    let n = 5;
+                    patternSign = "";
+
+                    for (a = 1; a <= n; a++) {
+
+                        for (c = 1; c <= n; c++) {
+                            patternSign += "*"
+                        }
+                        patternSign += "<br>";
+                        if ((a = 1) && (a = n)) {
+                           
+                            for (c = 1; c <= n; c++) {
+                                patternSign += c
+                                patternSign += "<br>";
+                        }
+
+                        }
+                        patternSign += "<br>";
+                    }
+
+                    return patternSign;
+                }
+
+                let wrappe = document.getElementById("pattern").innerHTML = jsPattern();
+
+            </script>
+
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

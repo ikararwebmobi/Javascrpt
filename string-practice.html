@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="card">
+            <div class="card-body">
+                
+                <input type="text" id="str" placeholder="Type any text here">
+                <input type="number" id="digiPrimary">
+                <button class="btn" onclick="rmvChar()">Multiply</button>
+                <p id="infoPara" class="para">
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <script>
+       /* function strPrint(){ 
+            let str = document.getElementById("str").value;
+            alert(str.length);
+       }
+   */
+
+       function rmvChar() {
+          let strn = document.getElementById("str").value;
+          let rmChrNum = Number(document.getElementById("digiPrimary").value);
+          let para = document.getElementById("infoPara");
+
+          let newStr1 = strn.substring(0,rmChrNum);
+          let newStr2 = strn.substring(rmChrNum + 1, strn.length);
+          
+         para.innerHTML = newStr1 + newStr2;
+       }
+       function charSwift(swiftStn){
+        let midChar = swiftStn.substring(1, swiftStn.length - 1);
+        return (swiftStn.charAt(swiftStn.length - 1) + midChar + swiftStn.charAt(0));
+       }
+
+       console.log(charSwift("Ikarar"));
+
+
+
+
+let digi1 = parseInt(prompt("Enter First Value"));
+let digi2 = parseInt(prompt("Enter Second Value"));
+let digi3 = parseInt(prompt("Enter Third Value"));
+
+if(digi1 < digi2 && digi1 < digi3){
+
+	if (digi2 < digi3){
+		document.write(`${digi1}, ${digi2}, ${digi3}`);
+      }
+      
+      else{
+      document.write(`${digi1}, ${digi3}, ${digi2}`);
+	}
+	
+}
+else if(digi2 < digi1 && digi2 < digi3){
+		if (digi1 < digi3){
+			document.write(`${digi2}, ${digi1}, ${digi3}`)
+        }
+        else{
+            document.write(`${digi2}, ${digi3}, ${digi1}`);
+	    }
+}
+else if(digi3 < digi1 && digi3 < digi2){
+		if (digi1 < digi2){
+			document.write(`${digi3}, ${digi1}, ${digi2}`)
+        }
+        else{
+         document.write(`${digi3}, ${digi2}, ${digi1}`);
+	    }
+}
+
+var students = [['David', 80], ['Vinoth', 77], ['Divya', 88], ['Ishitha', 95], ['Thomas', 68]];
+
+var Avgmarks = 0;
+
+for (var i=0; i < students.length; i++) {
+        Avgmarks += students[i][1];
+        var avg = (Avgmarks/students.length);
+} 
+
+console.log(avg);
+    </script>
+
+    
+</body>
+
+</html>

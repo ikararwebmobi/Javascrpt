@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patterns</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <div class="pattern-wrapper">
+
+                    <div class="pattern pattern_01">
+                        <h4>Pattern : 01</h4>
+                        <p id="pattern_01">
+                        </p>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // Pattern 1;
+
+        let jsPattern01 = (patternSign) => {
+            let n = 5;
+            patternSign = "";
+
+            for (a = 1; a <= n; a++) {
+                patternSign += "<p" + " class=row-" + a + ">";
+                for (b = 1; b <= a; b++) {
+                    patternSign += "*";
+                }
+                patternSign += "</p>";
+            }
+            return patternSign;
+        }
+
+        let wrapper1 = document.getElementById("pattern_01").innerHTML = jsPattern01();
+
+    
+
+    </script>
+</body>
+
+</html>
